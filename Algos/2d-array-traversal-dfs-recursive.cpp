@@ -4,6 +4,7 @@ using namespace std;
 
 vector<vector<int>> directions = {{-1,0},{0,1},{1,0},{0,-1}};
 
+
 void traversalDFS(int row, int col, vector<vector<int>> matrix, vector<vector<bool>> &seen, vector<int> &vis)
 {
   if(row<0 || col<0 || row>=matrix.size() || col>=matrix[0].size() || seen[row][col])
@@ -30,4 +31,6 @@ int main()
   for (auto i:vis) {
     cout<<i<<" ";
   }
+  
+  return 0;
 }
