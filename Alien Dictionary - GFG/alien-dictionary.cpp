@@ -5,52 +5,44 @@
 using namespace std;
 
  // } Driver Code Ends
-// User funion Template for C++
+// User function Template for C++
+
 class Solution{
     public:
+    string topo;
+    vector<int>g[150];
+    int vis[300]= {0};
     
-    void solve(int src, vector<int>& visited, vector<int>& topo, vector<int> adj[]){
-	    visited[src] = 1;
-	    for(auto i : adj[src]){
-	        if(!visited[i]){
-	            solve(i,visited,topo,adj);
-	        }
-	    }
-	    topo.push_back(src);
-	}
-    
-    string findOrder(string dict[], int N, int K) {
-        //code here
-        vector<int>adj[K];
-        for(int i=1; i<N; i++){
-            string s1 = dict[i-1];
-            string s2 = dict[i];
-            for(int j=0; j<min(s1.size(),s2.size()); j++){
-                if(s1[j] != s2[j]){
-                   int u = s1[j] - 'a';
-                   int v = s2[j] - 'a';
-                   adj[u].push_back(v);
-                   break;
-                }
+    void dfs(int s) {
+        vis[s]=1;
+        for (auto e:g[s]){
+            if (!vis[e]) {
+                dfs(e);
             }
         }
-        
-        vector<int>visited(K,0);
-	    vector<int>topo;
-	    for(int i=0; i<K; i++){
-	        if(!visited[i]){
-	            solve(i,visited,topo,adj);
-	        }
-	    }
-	    reverse(topo.begin(),topo.end());
-	    string s = "";
-	    for(int i=0; i<topo.size(); i++){
-	        s+=topo[i] + 'a';
-	    }
-	    return s;
+        char tp=s;
+        topo.push_back(s);
+    }
+    
+    
+string findOrder(string a[], int n, int k) {
+        for (int i=0;i<n-1; i++){
+            string s1= a[i];
+            string s2= a[i+1];
+            int j=0;
+            while(s1[j]==s2[j])
+            j++;
+            g[s1[j]].push_back(s2[j]);
+        }
+        for (int i=97; i<97+k; i++){
+            if(!vis[i]){
+                dfs(i);
+            }
+        }
+        reverse( topo.begin() , topo.end() ) ;
+        return topo;
     }
 };
-
 
 // { Driver Code Starts.
 string order;
