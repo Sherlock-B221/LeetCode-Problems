@@ -5,7 +5,8 @@ public:
         cin.tie(0);
         int ans = INT_MIN;
         int curr = 0;
-        for ( int i = 0; i< nums.size(); i++) {
+        int n = nums.size();
+        for ( int i = 0; i< n; i++) {
             curr = max( nums[i], curr + nums[i]);
             ans = max(ans, curr);
         }
