@@ -1,5 +1,8 @@
 class Solution {
 public:
+    Solution(){ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);}
     int maxProfit(vector<int>& prices) {
         int m = INT_MAX;
         int maxProfit = 0;
