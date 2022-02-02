@@ -20,8 +20,9 @@ class Solution{
            m[s].push_back(list[i]);
            
         }
-        for ( auto itr= m.begin(); itr!=m.end(); itr++ ){
-            result.push_back( itr->second );
+        for ( auto e:m ){
+           
+            result.push_back( e.second );
         }
     
         return result;
