@@ -7,20 +7,19 @@ using namespace std;
 class Solution{
 public:
     int *findTwoElement(int *arr, int n) {
-        unordered_map<int,int> m;
         int *arr1=new int[2];
         
-        for ( int i = 0; i<n; i++){
-            if ( m[arr[i]] > 0 )
-                arr1[0] = arr[i];
-            m[arr[i]]++;
-        
+        for ( int i = 0; i<n; i++ ) {
+            if ( arr[ abs(arr[i]) - 1 ] > 0  )
+                arr[ abs(arr[i]) - 1 ] *= -1;
+            else
+                arr1[0] = abs(arr[i]);
         }
-        for ( int i = 1; i<=n; i++) {
-            if ( m[i] < 1  )
-                arr1[1] = i;
+        for ( int i = 0; i<n; i++ ) {
+            if (arr[i] > 0) 
+                arr1[1] = i + 1;
         }
-        
+        // cout<<arr[0]<<endl;
         return arr1;
     }
 };
