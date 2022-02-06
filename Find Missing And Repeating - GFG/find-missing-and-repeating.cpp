@@ -9,17 +9,16 @@ public:
     int *findTwoElement(int *arr, int n) {
         unordered_map<int,int> m;
         int *arr1=new int[2];
-        int sum = 0;
+        
         for ( int i = 0; i<n; i++){
             if ( m[arr[i]] > 0 )
                 arr1[0] = arr[i];
             m[arr[i]]++;
-            sum+=arr[i];
+        
         }
         for ( int i = 1; i<=n; i++) {
-            if (m.find(i) == m.end()){
+            if ( m[i] < 1  )
                 arr1[1] = i;
-            }
         }
         
         return arr1;
