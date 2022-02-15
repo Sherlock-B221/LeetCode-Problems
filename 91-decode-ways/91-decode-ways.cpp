@@ -18,7 +18,9 @@ public:
         if(dp[i] != -1)
             return dp[i];
         
-        // rec
+        // rec 
+//         scam comment
+        
         char current = s[i], next = s[i+1];
         if(current == '0')
             return dp[i] = 0;       // as cant place 0 at first position for any alpha
