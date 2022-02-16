@@ -4,12 +4,13 @@ public:
         cin.tie(NULL);
         cout.tie(NULL);}
     int maxProfit(vector<int>& prices) {
-         int buy=prices[0];
-        int mp=0;
-        for(int k=1;k<prices.size();k++){
-            buy=min(buy,prices[k]);
-            mp=max(mp,prices[k]-buy);
+        int m = INT_MAX;
+        int maxProfit = 0;
+        for ( auto e : prices ) {
+            m = min(e,m);
+            maxProfit = max( e - m, maxProfit );
+//             scam comment
         }
-        return mp;
+        return maxProfit;
     }
 };
