@@ -1,20 +1,24 @@
 class Solution {
 public:
     int maxProfit(int k, vector<int>& prices) {
-       if(k==0) return 0; // base case
+        if(k==0) return 0; // base case
         int n = prices.size();
-        vector<pair<int, int>> dp(k, {INT_MAX, 0}); // vector <buy price, profit>
-        for(int i=0; i<n; i++)
-        {
-            dp[0].first = min(dp[0].first, prices[i]); // choose minimum BUY PRICE
-            dp[0].second = max(dp[0].second, prices[i]-dp[0].first); // find profit if bought at MINIMUM PRICE and sold at prices[i];
+        if (n==0) return 0;
+        int dp[k+1][n]; // vector <buy price, profit>
+        for ( int i = 0; i<= k; i++ ) {
+            dp[i][0] = 0;
+        }
+        for ( int i = 0; i< n; i++ ) {
+            dp[0][i] = 0;
+        }       
+        for ( int t = 1; t<=k; t++ ) {
+            int maxP = INT_MIN;
             
-            for(int j=1; j<k; j++)
-            {
-                dp[j].first = min(dp[j].first, prices[i]-dp[j-1].second); // choose minimum BUY PRICE
-                dp[j].second = max(dp[j].second, prices[i] - dp[j].first);// choose maximum profit if bought at MINIMUM PRICE ABOVE AND SOLD AT prices[i];
+            for ( int d = 1; d<n; d++) {
+                 maxP = max( maxP, dp[t-1][d-1] - prices[d-1] );
+                dp[t][d] = max( maxP + prices[d], dp[t][d-1] );
             }
         }
-        return dp[k-1].second;
+        return dp[k][n-1];
     }
 };
