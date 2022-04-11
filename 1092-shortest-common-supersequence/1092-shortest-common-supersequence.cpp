@@ -60,8 +60,9 @@ public:
         }
         
         cout<<ans<<" ";
-        reverse(ans.begin(),ans.end());
-        return ans;
+        string rev = string(ans.rbegin(), ans.rend());
+        // reverse(ans.begin(),ans.end());
+        return rev;
         
     }
 };
