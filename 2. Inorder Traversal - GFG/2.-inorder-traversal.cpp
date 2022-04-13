@@ -31,27 +31,15 @@ struct Node {
 
 class Solution {
   public:
-    // Function to return a list containing the inorder traversal of the tree.
-    void inorderUtil(Node *root, vector<int> &res) {
-        // inorder traversal works on Left Root Right.
-
-        // if root is null then we simply return.
-        if (root == NULL) return;
-
-        // first, we call the recursive function for left subtree.
-        inorderUtil(root->left, res);
-        // then we store the data at root in a list.
-        res.push_back(root->data);
-        // then we call the recursive function for right subtree.
-        inorderUtil(root->right, res);
-    }
+    
+    vector<int> arr;
     vector<int> inOrder(Node* root) {
-        // vector<int> arr(100001);
-        // if ( root != NULL ) {
-        //     inOrder(root->left);
-        //     arr.push_back(root->data);
-        //     inOrder(root->right);
-        // }
+        
+        if ( root != NULL ) {
+            inOrder(root->left);
+            arr.push_back(root->data);
+            inOrder(root->right);
+        }
         // stack<Node*> st;
         // Node *curr = root;
         // while ( curr != NULL || st.empty() == false) {
@@ -66,10 +54,10 @@ class Solution {
         //     curr = curr->right;
         // }
         // return arr;
-        vector<int> res;
-        inorderUtil(root, res);
+        // vector<int> res;
+        // inorderUtil(root, res);
         // returning the list.
-        return res;
+        return arr;
     }
 };
 
