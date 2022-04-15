@@ -35,28 +35,24 @@ class Solution {
     vector<int> arr;
     vector<int> inOrder(Node* root) {
         
-        if ( root != NULL ) {
-            inOrder(root->left);
-            arr.push_back(root->data);
-            inOrder(root->right);
-        }
-        // stack<Node*> st;
-        // Node *curr = root;
-        // while ( curr != NULL || st.empty() == false) {
-        //     while ( curr != NULL ) {
-        //         st.push(curr);
-        //         curr = curr->left;
-                
-        //     }
-        //     curr = st.top();
-        //     st.pop();
-        //     arr.push_back(curr->data);
-        //     curr = curr->right;
+        // if ( root != NULL ) {
+        //     inOrder(root->left);
+        //     arr.push_back(root->data);
+        //     inOrder(root->right);
         // }
-        // return arr;
-        // vector<int> res;
-        // inorderUtil(root, res);
-        // returning the list.
+        stack<Node*> st;
+        Node *curr = root;
+        while ( curr != NULL || st.empty() == false) {
+            while ( curr != NULL ) {
+                st.push(curr);
+                curr = curr->left;
+                
+            }
+            curr = st.top();
+            st.pop();
+            arr.push_back(curr->data);
+            curr = curr->right;
+        }
         return arr;
     }
 };
