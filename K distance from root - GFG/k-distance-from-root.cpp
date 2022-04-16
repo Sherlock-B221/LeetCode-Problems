@@ -117,12 +117,12 @@ struct Node
 
 void traverse( struct Node* root, int k, vector<int>& ans){
     // cout<<k<<" ";
-    if ( root == NULL || k<0 ) return;
+    if ( root == NULL ) return;
     if ( k == 0 ){
         // cout<<"k is "<<k<<" "<<root->data<<endl;
         ans.push_back(root->data);
     }
-    else {
+    else if ( k>=0) {
         
         traverse( root->left, k-1, ans );
         traverse( root->right, k-1, ans );
