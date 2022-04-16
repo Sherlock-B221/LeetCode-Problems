@@ -135,17 +135,16 @@ vector<int> leftView(Node *node)
     q.push(node);
     while ( q.empty() == false ) {
         int count = q.size();
-        vector<int> temp;
         for ( int i = 0; i<count; i++) {
             Node *curr = q.front();
             q.pop();
-            temp.push_back(curr->data);
+            if ( i == 0)
+                ans.push_back(curr->data);
             if ( curr->left != NULL )
                 q.push(curr->left);
             if ( curr->right != NULL)
                 q.push(curr->right);
         }
-        ans.push_back(temp[0]);
     }
     
     return ans;
