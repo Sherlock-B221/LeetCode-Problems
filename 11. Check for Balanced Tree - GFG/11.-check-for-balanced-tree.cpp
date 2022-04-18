@@ -105,7 +105,7 @@ class Solution{
     public:
     //Function to check whether a binary tree is balanced or not.
     int check( Node * root) {
-         if ( root == NULL )
+        if ( root == NULL )
             return 0;
         int leftHeight = check(root->left);
         if ( leftHeight == -1 ) return -1;
@@ -119,9 +119,25 @@ class Solution{
         else 
             return max(leftHeight,rightHeight) + 1;
     }
+    int height ( Node* root, bool &res) {
+        if (root == NULL )
+            return 0;
+        int l = height(root->left,res);
+        int r = height( root->right,res);
+        
+        res = res && ( abs(l - r) <= 1 ) ;
+        return 1 + max(l,r);
+        
+        
+        
+    }
     bool isBalanced(Node *root)
     {
-        return check(root) == -1 ? false : true;
+        bool res = true;
+        height(root,res);
+        return res;
+        
+        // return check(root) == -1 ? false : true;
     }
 };
 
