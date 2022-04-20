@@ -38,44 +38,26 @@ class Solution
 { 
     public:
     
-   bool findPath(Node *root, vector<Node*> &path, int k)
-{
-    // base case
-    if (root == NULL) return false;
- 
-    // Store this node in path vector. The node will be removed if
-    // not in path from root to k
-    path.push_back(root);
- 
-    // See if the k is same as root's key
-    if (root->data == k)
-        return true;
- 
-    // Check if k is found in left or right sub-tree
-    if ( (root->left && findPath(root->left, path, k)) ||
-         (root->right && findPath(root->right, path, k)) )
-        return true;
- 
-    // If not present in subtree rooted with root, remove root from
-    // path[] and return false
-    path.pop_back();
-    return false;
-}
+    bool findPath(Node* root, vector<Node*>& p, int n){
+        if ( root == NULL ) return false;
+        p.push_back(root);
+        if ( root->data == n) return true;
+        
+        if ( (root->left && findPath(root->left, p, n)) || (root->right && findPath(root->right, p, n)) )
+            return true;
+        p.pop_back();
+        return false;
+    }
     Node* lca(Node* root ,int n1 ,int n2 )
     {
-       vector<Node*> path1, path2;
- 
-    // Find paths from root to n1 and root to n1. If either n1 or n2
-    // is not present, return -1
-    if ( !findPath(root, path1, n1) || !findPath(root, path2, n2))
-          return NULL;
- 
-    /* Compare the paths to get the first different value */
-    int i;
-    for (i = 0; i < path1.size() && i < path2.size() ; i++)
-        if (path1[i] != path2[i])
-            break;
-    return path1[i-1];
+        vector<Node*> path1, path2;
+        if ( !findPath(root, path1, n1) || !findPath(root, path2, n2) )
+            return NULL;
+        int i;
+        for (i = 0; i<path1.size() && i<path2.size(); i++)
+            if (path1[i] != path2[i] )
+                break;
+        return path1[i-1];
     }
 };
 
