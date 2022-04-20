@@ -48,16 +48,29 @@ class Solution
         p.pop_back();
         return false;
     }
+    // Node* lca(Node* root ,int n1 ,int n2 )
+    // {
+    //     vector<Node*> path1, path2;
+    //     if ( !findPath(root, path1, n1) || !findPath(root, path2, n2) )
+    //         return NULL;
+    //     int i;
+    //     for (i = 0; i<path1.size() && i<path2.size(); i++)
+    //         if (path1[i] != path2[i] )
+    //             break;
+    //     return path1[i-1];
+    // }
     Node* lca(Node* root ,int n1 ,int n2 )
     {
-        vector<Node*> path1, path2;
-        if ( !findPath(root, path1, n1) || !findPath(root, path2, n2) )
-            return NULL;
-        int i;
-        for (i = 0; i<path1.size() && i<path2.size(); i++)
-            if (path1[i] != path2[i] )
-                break;
-        return path1[i-1];
+        if ( root == NULL ) return NULL;
+        if ( root->data == n1 || root->data == n2 ) return root;
+        
+        Node *left = lca(root->left, n1,n2);
+        Node *right = lca(root->right, n1, n2);
+        
+        if ( left != NULL && right != NULL ) return root;
+        
+        if ( left != NULL ) return left;
+        else return right;
     }
 };
 
