@@ -139,7 +139,7 @@ void convert(Node *head, TreeNode *&root) {
         }
         parent->left = left;
         parent->right = right;
-        // q.pop();
+        q.pop();
         
     }
     
