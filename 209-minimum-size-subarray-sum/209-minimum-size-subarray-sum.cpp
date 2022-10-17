@@ -13,7 +13,6 @@ public:
                 left++;
             }
         }
-        
         return minLength == INT_MAX ? 0 : minLength;
     }
 };
