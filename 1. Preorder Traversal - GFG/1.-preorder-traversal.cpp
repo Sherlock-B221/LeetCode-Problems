@@ -139,6 +139,8 @@ void pre(struct Node* root, vector<int>& res) {
 vector <int> preorder(Node* root)
 {
     vector<int> res;
+    for(auto i: res)
+        cout<<i;
     pre(root,res);
     return res;
 }
