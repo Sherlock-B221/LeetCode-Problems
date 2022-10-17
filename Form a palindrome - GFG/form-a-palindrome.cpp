@@ -33,6 +33,7 @@ int main(){
     int t;
     cin >> t;
     while(t--){
+        cout<<t;
         string str;
         cin >> str;
         Solution ob;
