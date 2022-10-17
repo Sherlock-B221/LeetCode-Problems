@@ -4,6 +4,7 @@ public:
         unordered_map<int,int> hash;
         for (int i=0; i<nums.size(); i++)
         {
+            cout<<hash[nums[i]];
             hash[nums[i]] = i;
         }
         for (int i = 0; i<nums.size(); i++)
