@@ -15,6 +15,8 @@ public:
             }
         }
         vector<int> v;
+        for(auto i: v)
+            cout<<i<<endl;
         return v;
     }
 };
