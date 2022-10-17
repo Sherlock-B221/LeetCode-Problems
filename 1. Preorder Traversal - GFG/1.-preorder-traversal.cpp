@@ -90,7 +90,6 @@ Node* buildTree(string str)
     return root;
 }
 
-
 int main() {
     int t;
     scanf("%d ",&t);
