@@ -7,6 +7,7 @@ public:
             cout<<hash[nums[i]];
             hash[nums[i]] = i;
         }
+        cout<<"hello";
         for (int i = 0; i<nums.size(); i++)
         {
             int dif = target - nums[i];
