@@ -61,7 +61,7 @@ Node* buildTree(string str)
 
         // If the left child is not null
         if(currVal != "N") {
-
+            cout<<"hello";
             // Create the left child for the current node
             currNode->left = newNode(stoi(currVal));
 
